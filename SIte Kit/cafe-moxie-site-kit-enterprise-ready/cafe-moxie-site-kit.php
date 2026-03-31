@@ -637,12 +637,37 @@ body.cm-motion-on .cm-sign-flicker{animation:cmSignFlicker " . ( $motion ? '6.2s
 		if ( empty( $rows ) || ! is_array( $rows ) ) {
 			return $out;
 		}
+
+		$stack = array();
 		foreach ( $rows as $row ) {
-			if ( is_array( $row ) && ! empty( $row[ $sub_key ] ) ) {
-				$out[] = $row[ $sub_key ];
+			$value = null;
+
+			if ( is_scalar( $row ) ) {
+				$value = $row;
+			} elseif ( is_array( $row ) && array_key_exists( $sub_key, $row ) ) {
+				$value = $row[ $sub_key ];
+			} elseif ( is_array( $row ) ) {
+				$value = $row;
+			}
+
+			if ( is_array( $value ) ) {
+				foreach ( new RecursiveIteratorIterator( new RecursiveArrayIterator( $value ) ) as $leaf ) {
+					if ( is_scalar( $leaf ) ) {
+						$stack[] = trim( (string) $leaf );
+					}
+				}
+			} elseif ( is_scalar( $value ) ) {
+				$stack[] = trim( (string) $value );
 			}
 		}
-		return array_values( array_filter( array_map( 'trim', $out ) ) );
+
+		foreach ( $stack as $item ) {
+			if ( '' !== $item ) {
+				$out[] = $item;
+			}
+		}
+
+		return array_values( array_unique( $out ) );
 	}
 
 	public static function flatten_format_rows( $rows ) {
