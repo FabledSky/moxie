@@ -395,6 +395,8 @@ The typography must combine:
 
 ### Headline Style
 Headlines must feel:
+- Font: [Chathura](https://fonts.google.com/specimen/Chathura?preview.lang=en_Latn)
+- This font is smaller than typical, so use h1:56px, h2:50px, h3:44px, h4:40px, h5:36px, h6:32px
 - Bold
 - Slightly condensed
 - Sign-like
@@ -404,6 +406,7 @@ Headlines must feel:
 
 ### Body Copy Style
 Body copy must feel:
+- [IBM Plex Sans](https://fonts.google.com/specimen/IBM+Plex+Sans?preview.lang=en_Latn)
 - Clean
 - Neutral
 - Highly readable
@@ -491,6 +494,7 @@ The Cafe Moxie logo must feel like:
 - A tool-counter emblem
 - A diner-meets-workshop mark
 - A lit badge in the dark
+- [Cafe Moxie Logo](https://moxie.fabledsky.com/wp-content/uploads/2026/03/Cafe-Moxie-Logo.webp)
 
 ### Logo Structure
 - `CAFE` is the smaller establishment word
